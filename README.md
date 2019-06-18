@@ -1,29 +1,34 @@
-# software-fronted
+#### 软件工程工作管理系统--前端vue支持
 
-## Project setup
-```
-npm install
-```
+:date:2019-06-18
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+> 系统程序设计课程设计 taught by BO
 
-### Compiles and minifies for production
-```
-npm run build
-```
+> 完成人：chong
 
-### Run your tests
-```
-npm run test
-```
+**主要功能**
 
-### Lints and fixes files
-```
-npm run lint
-```
+1. 考试管理：管理员可以增加考试，修改考试信息，给考试分配监考教师；并且能够实现分配监考时查看所有存在冲突的教师；普通用户可以查看自己所有的监考信息，并能查看监考的状态（已完成、已分配、未分配）
+2. 任务管理：管理员可以增加任务，修改任务信息，为任务分配完成教师；普通用户（教师）可以回复任务，以及查看此任务的所有回复内容（其他教师的回复），所有信息公开透明。
+3. 教师管理：管理员可以增加教师，修改教师信息，更改教师权限；普通用户可以修改个人信息等
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> 监考前一天向老师发送监考信息的功能由后端打印输出，符合需求。
+
+>  说明：本系统不含注册功能，所有教师的添加均由管理员完成。
+
+**技术实现**
+
+1. 实现基于多页面`login`与`main`，配置文件位于`vue.config.js`
+2. 与SpringBoot的交互通过`MyAxios.js`完成，发送`get`，`post`，`patch`请求
+3. 结合后端完成登录时的权限验证，未登录用户无法页面所有资源
+4. 管理员的操作相关组件位于`@/views/main/admin`下，普通用户相关组件位于`@/view/main`下
+
+**难点及收获**
+
+1. 对于后端传来的包装类`Invigilation`，使用两层`v-for`来书写显示逻辑，即每一行为一个考试信息，每一行中的监考教师字段显示此考试分配的所有监考教师信息
+2. 更好地理解了前后端分离的思想、vue组件化的思想、以及`axios`的使用、路由传参及参数的获取方法、组件生命周期回调函数
+3. 突然发觉所学的软件工程相关理论课程的作用，给实践以指导，少走弯路
+
+**待完善部分**
+
+前端UI，老师说的==xxxUI==忘记是什么名字了，后续有时间加入到我们的项目中
